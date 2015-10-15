@@ -21,7 +21,7 @@
      <td>Gender :</td>  
      <td><input type="radio" name="gender" value="male">Male  
   
-      <input type="radio" name="gender" value="female">Feale</td>  
+      <input type="radio" name="gender" value="female">Female</td>  
     </tr>  
     <tr>  
      <td>Phone :</td>  
