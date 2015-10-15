@@ -34,13 +34,11 @@
      </td>  
     </tr>  
     <tr>  
-     <td>City :</td>  
-     <td><select name="city">  
-       <option value="delhi">Delhi</option>  
-       <option value="mumbai">Mumbai</option>  
-       <option value="kolkata">Kolkata</option>  
-       <option value="chennai">Chennai</option>  
-       <option value="noida">Noida</option>  
+     <td>Work Location :</td>  
+     <td><select name="location">  
+       <option value="Annex-2">Annex-2</option>  
+       <option value="Simi Valley">Simi Valley</option>  
+       <option value="Woodland Hills">Woodland Hills</option>      
      </select>  
      </td>  
     </tr>  
