@@ -79,7 +79,7 @@ public class TestServlet extends HttpServlet {
 		} catch (URISyntaxException | SQLException e) {
 			System.out.println("Connection Failed! Check output console");
 			e.printStackTrace();
-			wr.println("Failed to uplod into database");
+			wr.println("Failed to uplod into database connection");
 		} finally {
 			try {
 				if (null != preparedStatement) {
