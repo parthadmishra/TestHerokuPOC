@@ -74,7 +74,7 @@ public class TestServlet extends HttpServlet {
 
 			i = preparedStatement.executeUpdate();
 			System.out
-					.println("Record is inserted into HerokuTestSample table!");
+					.println("Record is inserted into HerokuTestSample table!Success");
 
 		} catch (URISyntaxException | SQLException e) {
 			System.out.println("Connection Failed! Check output console");
