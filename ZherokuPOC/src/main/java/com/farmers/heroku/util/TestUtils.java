@@ -39,13 +39,17 @@ public class TestUtils {
 	}
 
 	public static String checkCustomer(String firstname, String lastname,
-			String gender, String phone, String email, String location) {
+			String gender, String phone, String email, String location)
+			throws IOException {
 		System.out.println("Calling URL Service");
 		URL url = null;
 		int result = 0;
+		HttpURLConnection hurl = null;
+		OutputStreamWriter osw = null;
 		try {
-			url = new URL("http://192.168.147.89:3000/registerService/register");
-			HttpURLConnection hurl = (HttpURLConnection) url.openConnection();
+			// url = URL("http://192.168.147.89:3000/registerService/register");
+			url = new URL("http://localhost:3000/registerService/register");
+			hurl = (HttpURLConnection) url.openConnection();
 			hurl.setRequestMethod("POST");
 			hurl.setDoOutput(true);
 			hurl.setRequestProperty("Content-Type", "application/json");
@@ -53,18 +57,20 @@ public class TestUtils {
 			String payload = prepareRequest(firstname, lastname, gender, phone,
 					email, location);
 
-			OutputStreamWriter osw = new OutputStreamWriter(
-					hurl.getOutputStream());
+			osw = new OutputStreamWriter(hurl.getOutputStream());
 			osw.write(payload);
 			osw.flush();
-			osw.close();
 			result = hurl.getResponseCode();
 		} catch (MalformedURLException e) {
 			System.out.println("checkCustomer:MalformedURLException");
 			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("checkCustomer:IOException");
-			e.printStackTrace();
+		} finally {
+			if (null != osw) {
+				osw.close();
+			}
+			if (null != hurl) {
+				hurl.disconnect();
+			}
 		}
 		return String.valueOf(result);
 	}
@@ -75,29 +81,29 @@ public class TestUtils {
 		StringBuffer payloadBuffer = new StringBuffer();
 		payloadBuffer.append("{");
 		payloadBuffer.append("\"firstName\"");
-		payloadBuffer.append(":");
+		payloadBuffer.append(":\"");
 		payloadBuffer.append(firstname);
-		payloadBuffer.append(",");
+		payloadBuffer.append("\",");
 		payloadBuffer.append("\"lastName\"");
-		payloadBuffer.append(":");
+		payloadBuffer.append(":\"");
 		payloadBuffer.append(lastname);
-		payloadBuffer.append(",");
+		payloadBuffer.append("\",");
 		payloadBuffer.append("\"gender\"");
-		payloadBuffer.append(":");
+		payloadBuffer.append(":\"");
 		payloadBuffer.append(gender);
-		payloadBuffer.append(",");
+		payloadBuffer.append("\",");
 		payloadBuffer.append("\"phone\"");
-		payloadBuffer.append(":");
+		payloadBuffer.append(":\"");
 		payloadBuffer.append(phone);
-		payloadBuffer.append(",");
+		payloadBuffer.append("\",");
 		payloadBuffer.append("\"eMail\"");
-		payloadBuffer.append(":");
+		payloadBuffer.append(":\"");
 		payloadBuffer.append(email);
-		payloadBuffer.append(",");
+		payloadBuffer.append("\",");
 		payloadBuffer.append("\"workLocation\"");
-		payloadBuffer.append(":");
+		payloadBuffer.append(":\"");
 		payloadBuffer.append(location);
-		payloadBuffer.append("}");
+		payloadBuffer.append("\"}");
 
 		String payload = payloadBuffer.toString();
 		System.out.println("Prepared Request: " + payload);
