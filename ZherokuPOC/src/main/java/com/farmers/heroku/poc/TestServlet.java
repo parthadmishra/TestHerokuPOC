@@ -51,7 +51,7 @@ public class TestServlet extends HttpServlet {
 				gender, phone, email, location);
 		System.out.println("Response Code:" + responseCode);
 
-		if ("401".equalsIgnoreCase(responseCode)) {
+		if ("400".equalsIgnoreCase(responseCode)) {
 			System.out.println("Existing Customer hence redirecting");
 			response.sendRedirect("ExistingCustomer.jsp");
 		} else {

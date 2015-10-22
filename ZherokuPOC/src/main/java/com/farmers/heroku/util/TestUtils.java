@@ -42,9 +42,9 @@ public class TestUtils {
 			String gender, String phone, String email, String location) {
 		System.out.println("Calling URL Service");
 		URL url = null;
+		int result = 0;
 		try {
-			url = new URL(
-					"http://macmini4.farmersinsurance.com:3000/registerService/register");
+			url = new URL("http://192.168.147.89:3000/registerService/register");
 			HttpURLConnection hurl = (HttpURLConnection) url.openConnection();
 			hurl.setRequestMethod("POST");
 			hurl.setDoOutput(true);
@@ -52,11 +52,13 @@ public class TestUtils {
 			hurl.setRequestProperty("Accept", "application/json");
 			String payload = prepareRequest(firstname, lastname, gender, phone,
 					email, location);
+
 			OutputStreamWriter osw = new OutputStreamWriter(
 					hurl.getOutputStream());
 			osw.write(payload);
 			osw.flush();
 			osw.close();
+			result = hurl.getResponseCode();
 		} catch (MalformedURLException e) {
 			System.out.println("checkCustomer:MalformedURLException");
 			e.printStackTrace();
@@ -64,8 +66,7 @@ public class TestUtils {
 			System.out.println("checkCustomer:IOException");
 			e.printStackTrace();
 		}
-
-		return null;
+		return String.valueOf(result);
 	}
 
 	private static String prepareRequest(String firstname, String lastname,

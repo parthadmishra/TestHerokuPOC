@@ -12,7 +12,8 @@
 		<table border="1">
 			<tr>
 				<td>Name :</td>
-				<td><%=request.getParameter("firstname")%><%=request.getParameter("lastname")%></td>
+				<td><%=request.getParameter("firstname")%></td>
+				<td><%=request.getParameter("lastname")%></td>
 			</tr>
 			<tr>
 				<td>Gender :</td>
