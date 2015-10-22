@@ -13,22 +13,7 @@
 			<tr>
 				<td>Name :</td>
 				<td><%=request.getParameter("firstname")%><%=request.getParameter("lastname")%></td>
-			</tr>
-			<tr>
-				<td>Gender :</td>
-				<td><%=request.getParameter("gender")%></td>
-			</tr>
-			<tr>
-				<td>Phone :</td>
-				<td><%=request.getParameter("phone")%></td>
-			</tr>
-			<tr>
-				<td>Email :</td>
-				<td><%=request.getParameter("email")%></td>
-			</tr>
-			<tr>
-				<td>City :</td>
-				<td><%=request.getParameter("city")%></td>
+				<td>is an Existing Customer</td>
 			</tr>
 		</table>
 	</center>

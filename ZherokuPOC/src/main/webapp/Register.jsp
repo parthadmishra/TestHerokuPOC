@@ -13,10 +13,15 @@
   <form method="post" action="TestServlet">  
    <table>  
     <tr>  
-     <td>Name :</td>  
-     <td><input type="text" name="name" />  
+     <td>First Name :</td>  
+     <td><input type="text" name="firstname" />  
      </td>  
-    </tr>  
+    </tr>
+    <tr>  
+     <td>Last Name :</td>  
+     <td><input type="text" name="lastname" />  
+     </td>  
+    </tr>
     <tr>  
      <td>Gender :</td>  
      <td><input type="radio" name="gender" value="male">Male  
